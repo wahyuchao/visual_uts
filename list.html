@@ -1,0 +1,48 @@
+<html>
+    <head>
+    </head>
+
+    <body>
+        <h1>Order List</h1>
+        <div id="list"></div>
+    </body>
+
+    <script>
+        const electron = require("electron");
+        const {
+            ipcRenderer
+        } = electron;
+        ipcRenderer.send("shopping:request:list");
+
+        ipcRenderer.on("shopping:response:list", (event, shoppings) => {
+            const listDiv = document.getElementById("list");
+            shoppings.forEach(shopping => {
+            const shoppingDiv = document.createElement("div");
+
+            const nameParagraph = document.createElement("p");
+            nameParagraph.innerHTML = `Name: ${shopping.name}`;
+
+            const numberParagraph = document.createElement("p");
+            numberParagraph.innerHTML = `Phone Number: ${shopping.number}`;
+
+            const symptomsParagraph = document.createElement("p");
+            symptomsParagraph.innerHTML = `Request: ${shopping.symptoms}`;
+
+            const doneParagraph = document.createElement("p");
+            doneParagraph.innerHTML = `Done: ${shopping.done ? "Yes" : "No"}`;
+
+            const hr = document.createElement("hr");
+
+            shoppingDiv.appendChild(nameParagraph);
+            shoppingDiv.appendChild(numberParagraph);
+            shoppingDiv.appendChild(symptomsParagraph);
+            shoppingDiv.appendChild(doneParagraph);
+            shoppingDiv.appendChild(hr);
+
+            listDiv.append(shoppingDiv);
+
+            });
+        });
+    </script>
+
+</html>

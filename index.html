@@ -1,19 +1,81 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<head>
+  <title>Chess Shop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+    const electron = require("electron");
+    const {
+      ipcRenderer
+    } = electron;
+    ipcRenderer.send("shopping:request:index");
+  </script>
+</head>
+
+<body>
+  <div class="container p-3 my-3 bg-primary text-white">
+    <h1>Chess Shop</h1>
+    <p>Selling Chessboard, Chess Pieces, Chess Clock and Chess Book</p>
+  </div>
+
+  <div class="container">
+    <h2>Chess Board</h2>
+    <p>Chess Board Armory 15"</p>
+    <div class="card" style="width:400px">
+      <img class="card-img-top" src="board.jpg" alt="Card image" style="width:100%">
+      <div class="card-body">
+        <h4 class="card-title">$20</h4>
+        <p class="card-text"></p>
+        <a href="create.html" class="btn btn-primary">Buy Now!</a>
+      </div>
+    </div>
+    <br>
+
+    <div class="container">
+      <h2>Chess Pieces</h2>
+      <p>Staunton Tournament Chess Pieces</p>
+      <div class="card" style="width:400px">
+        <img class="card-img-top" src="pieces.jpg" alt="Card image" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title">$13</h4>
+          <p class="card-text"></p>
+          <a href="create.html" class="btn btn-primary">Buy Now</a>
+        </div>
+      </div>
+      <br>
+
+      <div class="container">
+        <h2>Chess Clock</h2>
+        <p>ZMF-Pro Professional Tournament Chess Game Clock</p>
+        <div class="card" style="width:400px">
+          <img class="card-img-top" src="clock.jpg" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">$18</h4>
+            <p class="card-text"></p>
+            <a href="create.html" class="btn btn-primary">Buy Now</a>
+          </div>
+        </div>
+        <br>
+
+        <div class="container">
+          <h2>Chess Book</h2>
+          <p>The Complete Chess Course: From Beginning to Winning Chess!</p>
+          <div class="card" style="width:400px">
+            <img class="card-img-top" src="book.jpg" alt="Card image" style="width:100%">
+            <div class="card-body">
+              <h4 class="card-title">$9</h4>
+              <p class="card-text"></p>
+              <a href="create.html" class="btn btn-primary">Buy Now</a>
+            </div>
+          </div>
+          <br>
+
+          <script src="./renderer.js"></script>
+</body>
+
 </html>
